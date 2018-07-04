@@ -19,7 +19,7 @@ class Transfer
     # end
     
     
-    if(self.status == "pending" && self.valid? && self.)
+    if(self.status == "pending" && self.valid? && self.sender.balance > amount)
       self.sender.balance -= amount
       self.receiver.balance += amount
       self.status = "complete"
@@ -32,7 +32,7 @@ class Transfer
   end
   
   def reverse_transfer
-     if(self.status == "complete")
+     if(self.status == "complete" && valid? && self.receiver.balance < am)
       self.receiver.balance -= amount
       self.sender.balance += amount
       self.status = "reversed"
